@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Business Intelligence Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-mark">BI</span><div><strong>InsightBoard</strong><small>BUSINESS INTELLIGENCE</small></div></div>
+      <div class="side-label">WORKSPACE</div>
+      <a class="nav-link active" href="#overview"><span>▦</span> Overview</a>
+      <a class="nav-link" href="#performance"><span>↗</span> Performance</a>
+      <a class="nav-link" href="#anomalies"><span>⌁</span> Anomaly monitor</a>
+      <div class="sidebar-bottom"><div class="status-dot"></div><div><strong>Demo environment</strong><small>Synthetic sales data</small></div></div>
+    </aside>
+
+    <main class="main-content" id="overview">
+      <header class="topbar"><div><p class="eyebrow">BUSINESS OVERVIEW</p><h1>Decision Intelligence Dashboard</h1><p class="subheading">Understand performance, spot unusual activity, and explore sales trends.</p></div><div class="topbar-badge"><span class="live-dot"></span> Demo data · FY 2025</div></header>
+
+      <section class="filter-bar" aria-label="Dashboard filters">
+        <div class="filter-title"><span class="filter-icon">☷</span><div><strong>Filters</strong><small>Update the dashboard view</small></div></div>
+        <label>Period<select id="periodFilter"><option value="all">Full year 2025</option><option value="Q1">Q1 · Jan–Mar</option><option value="Q2">Q2 · Apr–Jun</option><option value="Q3">Q3 · Jul–Sep</option><option value="Q4">Q4 · Oct–Dec</option></select></label>
+        <label>Region<select id="regionFilter"><option value="All">All regions</option><option>North</option><option>South</option><option>East</option></select></label>
+        <label>Team<select id="teamFilter"><option value="All">All teams</option><option>Retail</option><option>Enterprise</option><option>Online</option></select></label>
+        <label>Product<select id="productFilter"><option value="All">All products</option><option>Laptop</option><option>Phone</option><option>Accessory</option></select></label>
+        <button id="resetFilters" class="reset-button" type="button">Reset</button>
+      </section>
+
+      <section class="kpi-grid" aria-label="Key performance indicators">
+        <article class="kpi-card"><div class="kpi-top"><span>Total revenue</span><span class="kpi-icon purple">₹</span></div><div id="revenueKpi" class="kpi-value">₹0</div><div class="kpi-foot"><span class="pill purple-pill">Sales</span><span>Gross sales value</span></div></article>
+        <article class="kpi-card"><div class="kpi-top"><span>Total profit</span><span class="kpi-icon green">↗</span></div><div id="profitKpi" class="kpi-value">₹0</div><div class="kpi-foot"><span class="pill green-pill">Profit</span><span>Revenue minus cost</span></div></article>
+        <article class="kpi-card"><div class="kpi-top"><span>Profit margin</span><span class="kpi-icon blue">%</span></div><div id="marginKpi" class="kpi-value">0%</div><div class="kpi-foot"><span class="pill blue-pill">Efficiency</span><span>Profit as % of revenue</span></div></article>
+        <article class="kpi-card"><div class="kpi-top"><span>Units sold</span><span class="kpi-icon orange">▤</span></div><div id="unitsKpi" class="kpi-value">0</div><div class="kpi-foot"><span class="pill orange-pill">Volume</span><span id="transactionFoot">0 transactions</span></div></article>
+      </section>
+
+      <section class="chart-grid" id="performance">
+        <article class="panel trend-panel"><div class="panel-heading"><div><h2>Revenue over time</h2><p>Monthly revenue across the selected segment</p></div><span class="panel-tag">TREND</span></div><div class="chart-wrap trend-chart"><canvas id="revenueChart" aria-label="Revenue trend chart"></canvas></div></article>
+        <article class="panel"><div class="panel-heading"><div><h2>Revenue by region</h2><p>Which region contributes most?</p></div><span class="panel-tag">REGION</span></div><div class="chart-wrap"><canvas id="regionChart" aria-label="Revenue by region chart"></canvas></div></article>
+        <article class="panel"><div class="panel-heading"><div><h2>Product mix</h2><p>Share of revenue by product</p></div><span class="panel-tag">PRODUCT</span></div><div class="chart-wrap doughnut-wrap"><canvas id="productChart" aria-label="Product revenue mix chart"></canvas></div></article>
+        <article class="panel"><div class="panel-heading"><div><h2>Team performance</h2><p>Revenue split across teams</p></div><span class="panel-tag">TEAM</span></div><div class="chart-wrap"><canvas id="teamChart" aria-label="Team performance chart"></canvas></div></article>
+      </section>
+
+      <section class="panel anomaly-panel" id="anomalies"><div class="panel-heading anomaly-heading"><div><h2>Unusual revenue transactions</h2><p>Potential outliers identified using the IQR rule</p></div><span id="anomalyCount" class="anomaly-count">0 flagged</span></div><div class="table-scroll"><table><thead><tr><th>Date</th><th>Region</th><th>Team</th><th>Product</th><th>Revenue</th><th>Profit</th><th>Status</th></tr></thead><tbody id="anomalyTable"><tr><td colspan="7" class="empty-state">Loading analysis…</td></tr></tbody></table></div><div class="table-footer"><span id="rowSummary">Showing potential outliers</span><button id="downloadCsv" class="download-button" type="button">↓ Export filtered data (CSV)</button></div><p class="disclaimer">Demo uses synthetic data. An outlier is a value worth investigating, not proof of an error or fraud.</p></section>
+      <footer>InsightBoard <span>•</span> Front-end BI demo built with HTML, CSS, JavaScript and Chart.js</footer>
+    </main>
+  </div>
+</body>
+</html>
