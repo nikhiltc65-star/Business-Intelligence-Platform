@@ -9,7 +9,7 @@ An interactive, browser-based BI dashboard built with **HTML, CSS, JavaScript an
 - Interactive revenue trend, regional comparison, team performance and product mix charts
 - IQR-based potential outlier detection
 - Export filtered transactions to CSV
-- Responsive layout for desktop and mobile
+- Responsive layout for desktop and mobile 
 - Repeatable synthetic data generated in the browser
 
 ## Run locally
