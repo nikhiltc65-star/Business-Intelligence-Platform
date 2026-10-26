@@ -26,10 +26,6 @@ No server, database or package installation is required for this front-end demo.
 - `style.css`: responsive styling
 - `script.js`: synthetic data generation, KPIs, filters, charts, outlier detection and CSV export
 
-## Data disclaimer
-
-All sales records are synthetic and created in the browser for demonstration. The project does not connect to a real company database. The anomaly detector flags unusual revenue values for review and does not establish fraud. This version is a front-end BI prototype, not a Python/SQL data pipeline.
-
 ## Next steps
 
 A future version could connect the dashboard to a Python API and a SQL database, add real CSV imports, and evaluate forecasting models against historical data.
